@@ -15,8 +15,8 @@ class Textbutton extends Component {
     return (
       <Button
         {...this.props}
-        src={'selection_bar.png'} x={this.props.x} y={this.props.y} anchor={[0,0]}
-        onClick={this.props.onClick} onTap={this.props.onTap} lite={false}
+        src={'buttons/button.png'}
+        onClick={this.props.onClick} onTap={this.props.onTap} lite={true}
       >
         <Text text={this.props.text} style={style} x={271} y={49} anchor={this.props.anchor} />
       </Button>
@@ -79,18 +79,19 @@ export default class Selection extends Component {
     let selectionPos;
 
     if (length === 1) {
-      selectionPos = [[360, 200]];
+      selectionPos = [[447, 150]];
     } else if (length === 2) {
-      selectionPos = [[360, 150], [360, 250]];
+      selectionPos = [[447, 150], [683, 150]];
     } else if (length === 3) {
-      selectionPos = [[360, 80], [360, 200], [360, 320]];
+      selectionPos = [[447, 150], [683, 150], [919, 150]];
     }
 
     return (
       <Layer visible={this.state.enabled}>
         {
           this.state.selections.map((item, i) => {
-            return <Textbutton text={item[1]} anchor={[0.5, 0.5]} x={selectionPos[i][0]} y={selectionPos[i][1]} key={i}
+            return <Textbutton position={[selectionPos[i][0], selectionPos[i][1]]} key={i}
+              width={200} height={50}
               onClick={() => this.gotoChapter(item[0])}
               onTap={() => this.gotoChapter(item[0])}
             />;

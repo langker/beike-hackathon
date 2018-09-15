@@ -24,6 +24,7 @@ export default class CustomScene extends Component {
     this.state = {
       loading: false,
       progress: 0,
+      showSelectOptionOrNot: true,
     };
 
     this.buttonBarVisible = false;
@@ -128,20 +129,28 @@ export default class CustomScene extends Component {
         onClick={this.handleClick.bind(this)} onTap={this.handleClick.bind(this)}>
         <Layer>
           <BGImage />
-          <FGImage width={1280} height={720}/>
-          <Selection />
+          <FGImage width={1280} height={720} />
           <Textwindow
             bgFile='textwindow/bg.png'
             size={24} color={0xffffff} bold={false} speed={80}
-            x={0} y={511} textRect={[160, 70, 520, 70]} yInterval={6}
+            x={0} y={511} textRect={[160, 70, 700, 200]} yInterval={6}
           >
             <Namebox x={160} y={15} />
-            <Textbutton text='Save' style={{ fontSize: 16, lineHeight: 16 }} position={[490, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'save')}/>
-            <Textbutton text='Load' style={{ fontSize: 16, lineHeight: 16 }} position={[540, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'load')}/>
-            <Textbutton text='Auto' style={{ fontSize: 16, lineHeight: 16 }} position={[590, 200]} anchor={[0.5, 1]} onPointerTap={this.auto.bind(this)}/>
-            <Textbutton text='Skip' style={{ fontSize: 16, lineHeight: 16 }} position={[640, 200]} anchor={[0.5, 1]} onPointerTap={this.skip.bind(this)}/>
-            <Textbutton text='History' style={{ fontSize: 16, lineHeight: 16 }} position={[700, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'history')}/>
-            <Textbutton text='Option' style={{ fontSize: 16, lineHeight: 16 }} position={[765, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'option')}/>
+            <Selection />
+            {/* {
+              this.state.showSelectOptionOrNot &&
+              <Textbutton text='是' style={{ fontSize: 16, lineHeight: 16 }} position={[440, 200]} anchor={[0.5, 1]} />
+            }
+            {
+              this.state.showSelectOptionOrNot &&
+              <Textbutton text='否' style={{ fontSize: 16, lineHeight: 16 }} position={[460, 200]} anchor={[0.5, 1]} />
+            } */}
+            {/* <Textbutton text='Save' style={{ fontSize: 16, lineHeight: 16 }} position={[490, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'save')} />
+            <Textbutton text='Load' style={{ fontSize: 16, lineHeight: 16 }} position={[540, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'load')} />
+            <Textbutton text='Auto' style={{ fontSize: 16, lineHeight: 16 }} position={[590, 200]} anchor={[0.5, 1]} onPointerTap={this.auto.bind(this)} />
+            <Textbutton text='Skip' style={{ fontSize: 16, lineHeight: 16 }} position={[640, 200]} anchor={[0.5, 1]} onPointerTap={this.skip.bind(this)} />
+            <Textbutton text='History' style={{ fontSize: 16, lineHeight: 16 }} position={[700, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'history')} />
+            <Textbutton text='Option' style={{ fontSize: 16, lineHeight: 16 }} position={[765, 200]} anchor={[0.5, 1]} onPointerTap={e => this.goto(e, 'option')} /> */}
           </Textwindow>
         </Layer>
         {this.props.children}
